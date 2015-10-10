@@ -1,0 +1,17 @@
+<template name = "home">
+	<!-- {{#if CurrentUser}} -->
+		<div id = "gotPlan">
+			<h1>Your next meal</h1>
+			{{mealType}}
+			{{mealTime}}
+			{{mealMenu}}
+			{{mealPicture}}
+			{{whoEating}}
+		</div>
+	<!-- {{else}} -->
+		<div id = "noPlan">
+			<h1>You have no meal plans</h1>
+			<button id = "buttonMakePlan" type="button" class="btn btn-lg">Plan a meal now!</button>
+		</div>
+<!-- 	{{/if}} -->
+</template>

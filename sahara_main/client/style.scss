@@ -1,13 +1,37 @@
 @import '{reywood:bootstrap3-sass}/bootstrap';
 
-#navbar{
+#navbar {
 
 	background-color: #E74C3C;
-	color: white;
 
-	#saharaTitle {
+	#navbarTitle {
+		color: white;
 		font-size: 25px;
-		padding-top: 8px;
 		font-weight: bold;
 	}
+
+	#navbarNavigations {
+		
+		float: right;
+		a {
+			color: white;
+		}
+
+	}
+}
+
+#buttonLogin {
+    text-align:center;
+}
+
+#noPlan {
+	text-align:center;
+	#buttonMakePlan{
+		background-color: #E74C3C;
+		color: white;
+	}
+}
+
+#gotPlan {
+	text-align:center;
 }
