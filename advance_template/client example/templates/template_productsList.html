@@ -1,0 +1,25 @@
+<template name = "productsList">
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Item name</th>
+				<th>Item price</th>
+				<th>Email</th>
+				<th>Location</th>
+			</tr>
+		</thead>
+		<tbody>
+			{{#each item}}
+			<tr>
+				<td>{{name}}</td>
+				<td>{{price}}</td>
+				<td>{{email}}</td>
+				<td>{{location}}</td>
+				<td>
+					<button id = "snapOrder" class = "btn btn-default">Snap!</button>
+				</td>
+			</tr>
+			{{/each}}
+		</tbody>
+	</table>
+</template>

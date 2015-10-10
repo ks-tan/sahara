@@ -1,0 +1,23 @@
+<template name = "inventoryList">
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Item name</th>
+				<th>Item price</th>
+				<th>Email</th>
+			</tr>
+		</thead>
+		<tbody>
+			{{#each item}}
+			<tr>
+				<td>{{name}}</td>
+				<td>{{price}}</td>
+				<td>{{email}}</td>
+				<td>
+					<button id = "removeItem" class = "btn btn-default">Remove</button>
+				</td>
+			</tr>
+			{{/each}}
+		</tbody>
+	</table>
+</template>
