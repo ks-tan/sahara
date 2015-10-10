@@ -6,14 +6,32 @@ Router.route('/',{
 	template: 'login'
 });
 
-Router.route('/user', {
-	template: 'user'
+Router.map(function() {
+	Router.route('/user', {
+		template: 'user'
+	});
+
+	Router.route('/feed',{
+		template: 'feed'
+	});
+
+	Router.route('/bank',{
+		template: 'bank'
+	});
+
+	Router.route('/create',{
+		template: 'create'
+	});
 });
 
-Router.route('/feed',{
-	template: 'feed'
-});
+var requireLogin = function() { 
+	if (! Meteor.user()) {
+	    // If user is not logged in render landingpage
+	    this.render('login'); 
+	} else {
+		//if user is logged in render whatever route was requested
+	    this.next(); 
+	}
+}
 
-Router.route('/bank',{
-	template: 'bank'
-});
+Router.onBeforeAction(requireLogin, {except: ['login']});
