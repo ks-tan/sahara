@@ -1,0 +1,37 @@
+@import '{reywood:bootstrap3-sass}/bootstrap';
+
+#navbar {
+
+	background-color: #E74C3C;
+
+	#navbarTitle {
+		color: white;
+		font-size: 25px;
+		font-weight: bold;
+	}
+
+	#navbarNavigations {
+		
+		float: right;
+		a {
+			color: white;
+		}
+
+	}
+}
+
+#buttonLogin {
+    text-align:center;
+}
+
+#noPlan {
+	text-align:center;
+	#buttonMakePlan{
+		background-color: #E74C3C;
+		color: white;
+	}
+}
+
+#gotPlan {
+	text-align:center;
+}
