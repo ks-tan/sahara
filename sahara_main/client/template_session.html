@@ -1,20 +1,29 @@
 <template name = "session">
-	<h1>Meal Info</h1>
-	<h2>{{mealType}}</h2>
-	<br>
-	<h3>Date & Time: {{datetimeToDisplayFormat datetime}} </h3>
-	<br>
-	<h3>Respond by: {{datetimeToDisplayFormat respondBy}} </h3>
-	<br>
-	<h4> Description: </h4>
-	<h4>{{description}}</h4>
+	<div id = "session">
+		<h1>Your are invited for</h1>
+		<div class="ui card fluid">
+			<div class="content">
+				<div class="header"><h1>{{mealType}}</h1></div>
+				<div class="description">
+					<h3>Date & Time: {{datetimeToDisplayFormat datetime}}</h3>
+					<h3>{{description}}</h3>
+				</div>
+			</div>
+		</div>
 
-	{{#if isNotDue}}
-	{{#if isNotResponded}}
-		<input id="rsvp-yes" type="submit" value="YES"/>
-		<input id="rsvp-no" type="submit" value="NO"/>
-	{{else}}
-		<!-- print due messages -->
-	{{/if}}
-	{{/if}}
+		{{#if isNotDue}}
+			{{#if isNotResponded}}
+				<div class = "ui buttons">
+					<button class = "ui positive button massive" id="rsvp-yes" type="submit" value="YES">Yes</button>
+					<div class="or"></div>
+					<button class = "ui negative button massive" id="rsvp-no" type="submit" value="NO">No</button>
+				</div>
+				<h4>Kindly respond by: {{datetimeToDisplayFormat respondBy}} </h4>
+			{{else}}
+			<!-- print You are going messages -->
+			{{/if}}
+		{{else}}
+			<!-- print due messages -->
+		{{/if}}
+	</div>
 </template>
