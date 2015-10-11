@@ -1,3 +1,36 @@
 <template name = 'recipe'>
-	Recipe page
+	<h1>Recipe page</h1>
+	<h3>Fill in one or more ingredients!</h3>
+	<form class = 'findRecipe'>
+		<label id="ingredient1"> Ingredient #1:  </label>
+		<input type="text" name="ingredient1" required>
+		<br>
+		<label id="ingredient2"> Ingredient #2:  </label>
+		<input type="text" name="ingredient2">
+		<br>
+		<label id="ingredient3"> Ingredient #3:  </label>
+		<input type="text" name="ingredient3">
+		<br>
+		<label id="ingredient4"> Ingredient #4:  </label>
+		<input type="text" name="ingredient4">
+		<br>
+		<label id="ingredient5"> Ingredient #5:  </label>
+		<input type="text" name="ingredient5">
+		<br>
+		<input type="submit" value="Search">
+	</form>
+
+	{{#if searchCompleted}}
+		<h1> search done </h1>
+		{{#each recipes}}
+			{{>singleRecipe}}
+		{{/each}}
+	{{/if}}
+</template>
+
+<template name="singleRecipe">
+	<h2>{{decodeUtf8 title}}</h2>
+	{{#each ingredients}}
+		<h5>{{decodeUtf8 this}}</h5>
+	{{/each}}
 </template>
