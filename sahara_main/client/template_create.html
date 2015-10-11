@@ -1,32 +1,33 @@
 <template name = "create">
 	<div id = "createForm">
-	<h1>Create a new meal plan!</h1>
-	<form class="new-session" id="new-session">
-		<!-- TODO Assign user_id as owner value !-->
-		<label id="datetimeLabel"> Date & Time:  </label>
-		<input name="datetime" type="datetime-local" value={{now}} min={{now}} required/>
-		<br>
-		<label id="respondByLabel"> Respond by: </label>
-		<input name="respondByDatetime" type="datetime-local" value={{now}} min={{now}} required/> 
-		<br>
+		<h1>Create a new meal plan!</h1>
+		<div class = "ui centered card">
+		<form class="new-session" id="new-session">
+			<!-- TODO Assign user_id as owner value !-->
+			<label id="datetimeLabel"> Date & Time:  </label>
+			<input name="datetime" type="datetime-local" value={{now}} min={{now}} required/>
+			<br>
+			<label id="respondByLabel"> Respond by: </label>
+			<input name="respondByDatetime" type="datetime-local" value={{now}} min={{now}} required/> 
+			<br>
+			<!-- Checkbox for meal type -->
+			<ul id = "mealTypeList">
+			<li><input name="mealType" type="radio" value="Breakfast" checked />
+			<label id="mealTypeLabel"> Breakfast </label></li>
+			<li><input name="mealType" type="radio" value="Lunch" />
+			<label id="mealTypeLabel"> Lunch </label></li>
+			<li><input name="mealType" type="radio" value="Dinner" />
+			<label id="mealTypeLabel"> Dinner </label></li>
+			</ul>
 
-		<!-- Checkbox for meal type -->
-		<ul id = "mealTypeList">
-		<li><input name="mealType" type="radio" value="Breakfast" checked />
-		<label id="mealTypeLabel"> Breakfast </label></li>
-		<li><input name="mealType" type="radio" value="Lunch" />
-		<label id="mealTypeLabel"> Lunch </label></li>
-		<li><input name="mealType" type="radio" value="Dinner" />
-		<label id="mealTypeLabel"> Dinner </label></li>
-		</ul>
 
+			<label id="descriptionLabel"> Description: </label>
+			<br>
+			<textarea rows="4" cols="50" name="description" form="new-session"></textarea>
+			<br>
 
-		<label id="descriptionLabel"> Description: </label>
-		<br>
-		<textarea rows="4" cols="50" name="description" form="new-session"></textarea>
-		<br>
-
-  		<button id = "buttonMakePlan" type = "submit" class="btn btn-large">Add plan</button>
-	</form>
+		</form>
+		</div>
+		<button id = "buttonMakePlan" type = "submit" class="btn btn-large">Add plan</button>
 	</div>
 </template>
