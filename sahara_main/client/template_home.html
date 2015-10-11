@@ -5,12 +5,25 @@
 			<h1>Your next meal</h1>
 			<div id = "homeCard" class = "ui centered card">
 				<div class = "content">
+					{{#if equals mealType 'Breakfast'}}
+						<img class="mini ui image" src="images/morning.png">
+					{{else}}
+						{{#if equals mealType 'Lunch'}}
+							<img class="mini ui image" src="images/afternoon.png">
+						{{else}}
+							{{#if equals mealType 'Dinner'}}
+								<img class="mini ui image" src="images/moon.png">
+							{{/if}}
+						{{/if}}
+					{{/if}}
 					<div class = "header"><h1>{{mealType}}</h1></div>
 					<div class = "meta"><h3>{{datetimeToDisplayFormat datetime}}</h3></div>
 					<div class = "description"><h3>{{description}}</h3></div>
 				</div>
 				<div class="extra content">
-					{{showNameWithFbId rsvpYes}}
+					<h4>Eating: {{#each showNameWithFbId rsvpYes}}
+						<em> {{this}}</em> /
+					{{/each}}</h4>
 				</div>
 			</div>
 			<a id = "buttonMakePlan" href="/create" class="btn btn-lg">Plan another meal</a>

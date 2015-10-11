@@ -1,13 +1,29 @@
 <template name = "session">
 	<div id = "session">
 		<h1>Your are invited for</h1>
-		<div class="ui card fluid">
+		<div id = "sessionCard" class="ui centered card">
 			<div class="content">
+				{{#if equals mealType 'Breakfast'}}
+						<img class="mini ui image" src="images/morning.png">
+				{{else}}
+					{{#if equals mealType 'Lunch'}}
+						<img class="mini ui image" src="images/afternoon.png">
+					{{else}}
+						{{#if equals mealType 'Dinner'}}
+							<img class="mini ui image" src="images/moon.png">
+						{{/if}}
+					{{/if}}
+				{{/if}}
 				<div class="header"><h1>{{mealType}}</h1></div>
 				<div class="description">
 					<h3>Date & Time: {{datetimeToDisplayFormat datetime}}</h3>
 					<h3>{{description}}</h3>
 				</div>
+			</div>
+			<div class="extra content">
+				<h4>Eating: {{#each showNameWithFbId rsvpYes}}
+					<em> {{this}}</em> /
+				{{/each}}</h4>
 			</div>
 		</div>
 
