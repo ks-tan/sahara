@@ -24,6 +24,7 @@ Template.registerHelper('showNameWithFbId', function(ids) {
 	for (x in ids) {
 		result.push(Meteor.users.findOne({_id: ids[x]})['profile']['name']);
 	}
-
+	console.log(result);
 	return result;
 });
+

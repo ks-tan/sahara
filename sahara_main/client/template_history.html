@@ -5,9 +5,26 @@
 	{{#each plan}}
 		<div class = "card">
 			<div class = "content">
+				{{#if equals mealType 'Breakfast'}}
+					<img class="right floated mini ui image" src="images/morning.png">
+				{{else}}
+					{{#if equals mealType 'Lunch'}}
+						<img class="right floated mini ui image" src="images/afternoon.png">
+					{{else}}
+						{{#if equals mealType 'Dinner'}}
+							<img class="right floated mini ui image" src="images/moon.png">
+						{{/if}}
+					{{/if}}
+				{{/if}}
 				<div class = "header">{{mealType}}</div>
 				<div class = "meta">{{datetimeToDisplayFormat datetime}}</div>
-				<div class = "description">{{description}}</div>
+				<div class = "description">
+					{{description}}<br>
+					<p> Eating: 
+					{{#each showNameWithFbId rsvpYes}}
+						<em>{{this}}</em>/
+					{{/each}}</p>
+				</div>
 			</div>
 			<div class="extra content">
 			    <div class="ui two buttons">
