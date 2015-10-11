@@ -1,3 +1,31 @@
 <template name = "create">
 	<h1>Create a new meal plan!</h1>
+	<form class="new-session" id="new-session">
+		<!-- TODO Assign user_id as owner value !-->
+		<label id="datetimeLabel"> Date:  </label>
+		<input name="datetime" type="datetime-local" value={{now}} required/>
+		<br>
+		<label id="respondByLabel"> Respond by: </label>
+		<input name="respondByDatetime" type="datetime-local" value={{now}} required/> 
+		<br>
+
+		<!-- Checkbox for meal type -->
+		<input name="mealType" type="radio" value="breakfast" checked />
+		<label id="mealTypeLabel"> Breakfast </label>
+		<br>
+		<input name="mealType" type="radio" value="lunch" />
+		<label id="mealTypeLabel"> Lunch </label>
+		<br>
+		<input name="mealType" type="radio" value="dinner" />
+		<label id="mealTypeLabel"> Dinner </label>
+		<br>
+		<br>
+
+		<label id="descriptionLabel"> Description: </label>
+		<br>
+		<textarea rows="4" cols="50" name="description" form="new-session"></textarea>
+		<br>
+
+  		<input type="submit" value="Add Plan">
+	</form>
 </template>

@@ -2,9 +2,6 @@
 Template.create.helpers ({
 	now: function() {
 		return datetimeToDatetimeString(new Date);
-
-	  // or use moment to avoid custom function
-	  // return moment().formact("YYYY-MM-DD");
 	}
 });
 
