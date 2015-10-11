@@ -6,19 +6,26 @@ Router.route('/',{
 	template: 'login'
 });
 
-Router.map(function() {
+Router.route('home',{
+	template: 'home'
+});
 
-	Router.route('home',{
-		template: 'home'
-	});
+Router.route('create',{
+	template: 'create'
+});
 
-	Router.route('create',{
-		template: 'create'
-	});
+Router.route('history',{
+	template: 'history'
+});
 
-	Router.route('history',{
-		template: 'history'
-	});
+Router.route('/session/:_id', function() {
+	if (this.ready()) {
+		this.render('session', {
+			data: function(){
+				return Sessions.findOne({_id: this.params._id});
+			}
+		});
+	}
 });
 
 var requireLogin = function() { 

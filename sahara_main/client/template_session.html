@@ -1,0 +1,16 @@
+<template name = "session">
+	<h1>Meal Info</h1>
+	<h2>{{mealType}}</h2>
+	<br>
+	<h3>Date & Time: {{datetimeToDisplayFormat datetime}} </h3>
+	<br>
+	<h3>Respond by: {{datetimeToDisplayFormat respondBy}} </h3>
+	<br>
+	<h4> Description: </h4>
+	<h4>{{description}}</h4>
+
+	<form class="rsvp">
+		<input type="submit" value="YES"/>
+		<input type="submit" value="NO"/>
+	</form>
+</template>
