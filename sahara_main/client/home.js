@@ -15,12 +15,6 @@ Template.home.helpers ({
 	}
 });
 
-Template.home.events ({
-	"click #buttonMakePlan": function(){
-		Router.go('create');
-	}
-});
-
 Template.registerHelper('datetimeToDisplayFormat', function (datetime) {
 	var date = datetime.split("T")[0];
 	var time = datetime.split("T")[1];

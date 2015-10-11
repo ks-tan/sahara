@@ -1,21 +1,23 @@
 <template name = "home">
-	<!-- {{#if CurrentUser}} -->
+	{{#if hasPlan}}
+		{{#with sessionSummary}}
 		<div id = "gotPlan">
 			<h1>Your next meal</h1>
-			{{sessionSummary.mealType}}
+			{{mealType}}
 			<br>
-			{{datetimeToDisplayFormat sessionSummary.datetime}}
+			{{datetimeToDisplayFormat datetime}}
 			<br>
-			{{datetimeToDisplayFormat sessionSummary.respondBy}}
+			{{datetimeToDisplayFormat respondBy}}
 			<br>
-			{{sessionSummary.description}}
+			{{description}}
 			<br>
-			{{sessionSummary.whoEating}}
+			{{whoEating}}
 		</div>
-	<!-- {{else}} -->
+		{{/with}}
+	{{else}}
 		<div id = "noPlan">
 			<h1>You have no meal plans</h1>
-			<button id = "buttonMakePlan" type="button" class="btn btn-lg">Plan a meal now!</button>
+			<a id = "buttonMakePlan" href="/create" class="btn btn-lg">Plan a meal now!></a>
 		</div>
-<!-- 	{{/if}} -->
+	{{/if}}
 </template>
