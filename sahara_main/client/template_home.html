@@ -3,21 +3,23 @@
 		{{#with sessionSummary}}
 		<div id = "gotPlan">
 			<h1>Your next meal</h1>
-			{{mealType}}
-			<br>
-			{{datetimeToDisplayFormat datetime}}
-			<br>
-			{{datetimeToDisplayFormat respondBy}}
-			<br>
-			{{description}}
-			<br>
-			{{whoEating}}
+			<div id = "homeCard" class = "ui card fluid">
+				<div class = "content">
+					<div class = "header"> {{mealType}}</div>
+					<div class = "meta">{{datetimeToDisplayFormat datetime}}</div>
+					<div class = "description">{{description}}</div>
+				</div>
+				<div class="extra content">
+					{{whoEating}}
+				</div>
+			</div>
+			<a id = "buttonMakePlan" href="/create" class="btn btn-lg">Plan another meal</a>
 		</div>
 		{{/with}}
 	{{else}}
 		<div id = "noPlan">
 			<h1>You have no meal plans</h1>
-			<a id = "buttonMakePlan" href="/create" class="btn btn-lg">Plan a meal now!></a>
+			<a id = "buttonMakePlan" href="/create" class="btn btn-lg">Plan a meal now!</a>
 		</div>
 	{{/if}}
 </template>
