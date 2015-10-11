@@ -22,4 +22,5 @@ fourseven:scss
 reywood:bootstrap3-sass
 iron:router
 accounts-facebook
-service-configuration
+service-configuration       
+stylus
