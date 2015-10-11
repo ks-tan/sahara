@@ -9,13 +9,17 @@ Template.home.helpers ({
 			participatingSession = Sessions.findOne({ _id: participatingSessionId});
 		}
 
+
 		if (typeof participatingSession !== 'undefined') {
 			if (sessionUserOwn['datetime'] < participatingSession['datetime']) {
+				sessionUserOwn['rsvpYes'] = getRsvpYes(sessionUserOwn['_id']);
 				return sessionUserOwn;
 			} else {
+				participatingSession['rsvpYes'] = getRsvpYes(participatingSession['_id']);
 				return participatingSession;
 			}
 		} else {
+			sessionUserOwn['rsvpYes'] = getRsvpYes(sessionUserOwn['_id']);
 			return sessionUserOwn;
 		}
 	},
@@ -31,6 +35,15 @@ Template.home.helpers ({
 		return typeof sessionUserOwn !== 'undefined' | typeof participatingSession !== 'undefined';
 	}
 });
+
+getRsvpYes = function(sessionId){
+	var rsvpYes = Rsvps.find({sessionId: sessionId, participate: true}).fetch();
+	var arr = new Array();
+	for (x in rsvpYes){
+		arr.push(rsvpYes[x]['userId']);
+	}
+	return arr;
+};
 
 Template.registerHelper('datetimeToDisplayFormat', function (datetime) {
 	datetime = datetimeToDatetimeString(new Date(datetime));

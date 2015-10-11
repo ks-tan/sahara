@@ -1,6 +1,10 @@
 Template.history.helpers({
 	'plan': function(){
-		sessionSummary = Sessions.find();
+		sessionSummary = Sessions.find().fetch();
+		for (x in sessionSummary) {
+			var sessionId = sessionSummary[x]['_id'];
+			sessionSummary[x]["rsvpYes"] = getRsvpYes(sessionId);
+		}
 		return sessionSummary;
 	}
 });
