@@ -18,3 +18,12 @@ Template.registerHelper('datetimeToDisplayFormat', function (datetime) {
 
 	return date + " " + time;
 });
+
+Template.registerHelper('showNameWithFbId', function(ids) {
+	var result = new Array();
+	for (x in ids) {
+		result.push(Meteor.users.findOne({_id: ids[x]})['profile']['name']);
+	}
+
+	return result;
+});
