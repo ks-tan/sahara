@@ -1,13 +1,21 @@
 Template.home.helpers ({
 	sessionSummary: function() {
 		var now = new Date();
-		return Sessions.findOne({ owner: Meteor.userId(), datetime: { $gt: now.getTime()}}, {sort: {datetime: 1}});
+		var sessionUserOwn = Sessions.findOne({ owner: Meteor.userId(), datetime: { $gt: now.getTime()}}, {sort: {datetime: 1}});
+		var sessionUserParticipate = Sessions.findOne({ rsvpYes: Meteor.userId() , datetime: { $gt: now.getTime()}}, {sort: {datetime: 1}});
+		
+		if (sessionUserOwn['datetime'] < sessionUserParticipate['datetime']) {
+			return sessionUserOwn;
+		} else {
+			return sessionUserParticipate;
+		}
 	},
 	hasPlan: function(){
 		var now = new Date();
-		var sessionAfterNow = Sessions.findOne({ owner: Meteor.userId(), datetime: { $gt: now.getTime()}}, {sort: {datetime: 1}});
-
-		return typeof sessionAfterNow !== 'undefined'
+		var sessionUserOwn = Sessions.findOne({ owner: Meteor.userId(), datetime: { $gt: now.getTime()}}, {sort: {datetime: 1}});
+		var sessionUserParticipate = Sessions.findOne({ rsvpYes: Meteor.userId() , datetime: { $gt: now.getTime()}}, {sort: {datetime: 1}});
+		
+		return typeof sessionUserOwn !== 'undefined' | typeof sessionUserParticipate !== 'undefined';
 	}
 });
 
