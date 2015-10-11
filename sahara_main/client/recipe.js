@@ -1,12 +1,22 @@
 Template.recipe.events({
+	"click .ingredientCard": function(event) {
+		if (this.status === "inactive"){
+			Ingredients.update(this._id,{$set: {status: "active"}});
+		}else{
+			Ingredients.update(this._id,{$set: {status: "inactive"}});
+		}
+	},
+	"click #removeIcon": function(event) {
+		Ingredients.remove({_id: this._id});
+	},
 	"submit .findRecipe": function(event) {
       	event.preventDefault();
 
       	var selectedIngredients = new Array();
       	var ingredients = Ingredients.find({userId: Meteor.user()._id}).fetch();
       	for (x in ingredients) {
-      		var id = '#' + ingredients[x]['ingredient'];
-      		if($(id).is(":checked")) {
+      		console.log(ingredients[x].status);
+      		if(ingredients[x].status === "active") {
       			selectedIngredients.push(ingredients[x]['ingredient']);
       		}
       	}
@@ -15,6 +25,7 @@ Template.recipe.events({
       	for (x in selectedIngredients) {
       		url += selectedIngredients[x] + "%20";
       	}
+      	console.log(url);
       	httpGetRecipe(url);
     },
 	"submit .addIngredient": function(event) {
@@ -71,6 +82,7 @@ Template.recipe.helpers({
 			var recipe = JSON.parse(recipeData[x]).recipe;
 			recipeSummary['title'] = recipe.title;
 			recipeSummary['ingredients'] = recipe.ingredients;
+			recipeSummary['image_url'] = recipe.image_url;
 			recipeSummaries.push(recipeSummary);
 		}
 		return recipeSummaries;
@@ -82,6 +94,14 @@ Template.recipe.helpers({
 
 	ingredients: function() {
 		return Ingredients.find({userId: Meteor.user()._id});
+	},
+
+	selectedClass: function() {
+		if (this.status === 'active'){
+			return 'selected';
+		}else{
+			return 'unselected';
+		}
 	}
 });
 

@@ -1,48 +1,54 @@
 <template name = 'recipe'>
-	<h1>Recipe page</h1>
-<!-- 	<h3>Fill in one or more ingredients!</h3>
-	<form class = 'findRecipe'>
-		<label id="ingredient1"> Ingredient #1:  </label>
-		<input type="text" name="ingredient1" required>
+	<div class = "container">
 		<br>
-		<label id="ingredient2"> Ingredient #2:  </label>
-		<input type="text" name="ingredient2">
-		<br>
-		<label id="ingredient3"> Ingredient #3:  </label>
-		<input type="text" name="ingredient3">
-		<br>
-		<label id="ingredient4"> Ingredient #4:  </label>
-		<input type="text" name="ingredient4">
-		<br>
-		<label id="ingredient5"> Ingredient #5:  </label>
-		<input type="text" name="ingredient5">
-		<br>
-		<input type="submit" value="Search">
-	</form> -->
-
-	<form class = 'addIngredient'>
-		<label id="addIngredient"> New ingredient:  </label>
-		<input type="text" name="ingredient" required>
-	</form>
-	<form class = 'findRecipe'>
-		{{#each ingredients}}
-			<input type="checkbox" id={{ingredient}}>
-			<label>{{ingredient}}</label>
-		{{/each}}
-		<br>
-		<button type="submit">Find Recipe</button>
-	</form>
-	{{#if searchCompleted}}
-		<h1> search done </h1>
-		{{#each recipes}}
-			{{>singleRecipe}}
-		{{/each}}
-	{{/if}}
+		<div class = "row">
+			<div class = "col-md-12 col-sm-12">
+				<h2>Your ingredients</h2><br>
+				<form class = 'addIngredient'>
+					<label id="addIngredient"> Add ingredient:  </label>
+					<input type="text" name="ingredient" required>
+				</form>
+				<form class = 'findRecipe'>
+					{{#each ingredients}}
+						<div class = "btn btn-md ingredientCard {{selectedClass}}" id={{ingredient}}>{{ingredient}} <i class="remove icon" id = "removeIcon"></i></div>
+					{{/each}}
+					<br>
+					<button class = "btn btn-md" id = "buttonFindRecipe" type="submit">Find Recipe</button><br><br>
+				</form>
+			</div>
+		</div>
+		<div class = "row">
+			<div class = "col-md-12 col-sm-12">
+				<h2>Menu recommendations</h2><br>
+				{{#if searchCompleted}}
+				<div class = "ui stackable four centered cards">
+					{{#each recipes}}
+						<div class = "ui card">
+							{{>singleRecipe}}
+						</div>
+					{{/each}}
+				</div>
+				{{/if}}
+			</div>
+		</div>
+	</div>
 </template>
 
 <template name="singleRecipe">
-	<h2>{{decodeUtf8 title}}</h2>
-	{{#each ingredients}}
-		<h5>{{decodeUtf8 this}}</h5>
-	{{/each}}
+	<div class = "image" id = "cardImage">
+		<img src = "{{decodeUtf8 image_url}}">
+	</div>
+	<div class = "content">
+		<div class = "header">
+			<center>{{decodeUtf8 title}}</center>
+		</div>
+	</div>
+	<div class = "content">
+		{{#each ingredients}}
+			<p>{{decodeUtf8 this}}</p>
+		{{/each}}
+	</div>
+	<div class="ui bottom attached button" id = "recipeCreatePlan">
+      	<h4>Create meal plan</h4>
+    </div>
 </template>
