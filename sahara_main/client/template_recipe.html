@@ -24,10 +24,14 @@
 		<label id="addIngredient"> New ingredient:  </label>
 		<input type="text" name="ingredient" required>
 	</form>
-	{{#each ingredients}}
-		<p>{{ingredient}} <a id = "getRecipe">Get recipe</a></p>
-	{{/each}}
-
+	<form class = 'findRecipe'>
+		{{#each ingredients}}
+			<input type="checkbox" id={{ingredient}}>
+			<label>{{ingredient}}</label>
+		{{/each}}
+		<br>
+		<button type="submit">Find Recipe</button>
+	</form>
 	{{#if searchCompleted}}
 		<h1> search done </h1>
 		{{#each recipes}}
