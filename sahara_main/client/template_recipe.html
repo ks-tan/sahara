@@ -1,6 +1,6 @@
 <template name = 'recipe'>
 	<h1>Recipe page</h1>
-	<h3>Fill in one or more ingredients!</h3>
+<!-- 	<h3>Fill in one or more ingredients!</h3>
 	<form class = 'findRecipe'>
 		<label id="ingredient1"> Ingredient #1:  </label>
 		<input type="text" name="ingredient1" required>
@@ -18,7 +18,15 @@
 		<input type="text" name="ingredient5">
 		<br>
 		<input type="submit" value="Search">
+	</form> -->
+
+	<form class = 'addIngredient'>
+		<label id="addIngredient"> New ingredient:  </label>
+		<input type="text" name="ingredient" required>
 	</form>
+	{{#each ingredients}}
+		<p>{{ingredient}} <a id = "getRecipe">Get recipe</a></p>
+	{{/each}}
 
 	{{#if searchCompleted}}
 		<h1> search done </h1>
