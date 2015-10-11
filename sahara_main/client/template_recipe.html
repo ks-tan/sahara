@@ -2,8 +2,8 @@
 	<div class = "container">
 		<br>
 		<div class = "row">
-			<div class = "col-md-4 col-sm-4">
-				<center><h2>Your ingredients</h2></center><br>
+			<div class = "col-md-12 col-sm-12">
+				<h2>Your ingredients</h2><br>
 				<form class = 'addIngredient'>
 					<label id="addIngredient"> Add ingredient:  </label>
 					<input type="text" name="ingredient" required>
@@ -16,10 +16,12 @@
 					<button class = "btn btn-md" id = "buttonFindRecipe" type="submit">Find Recipe</button><br><br>
 				</form>
 			</div>
-			<div class = "col-md-8 col-sm-8">
-				<center><h2>Menu recommendations</h2></center><br>
+		</div>
+		<div class = "row">
+			<div class = "col-md-12 col-sm-12">
+				<h2>Menu recommendations</h2><br>
 				{{#if searchCompleted}}
-				<div class = "ui stackable centered cards">
+				<div class = "ui stackable four centered cards">
 					{{#each recipes}}
 						<div class = "ui card">
 							{{>singleRecipe}}
@@ -33,7 +35,7 @@
 </template>
 
 <template name="singleRecipe">
-	<div class = "image">
+	<div class = "image" id = "cardImage">
 		<img src = "{{decodeUtf8 image_url}}">
 	</div>
 	<div class = "content">
