@@ -1,5 +1,14 @@
 @import '{reywood:bootstrap3-sass}/bootstrap';
 
+.navbar-default .navbar-toggle:hover, 
+.navbar-default .navbar-toggle:focus {
+	background-color: #E74C3C
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: white;
+}
+
 #navbar {
 
 	background-color: #E74C3C;
@@ -34,4 +43,12 @@
 
 #gotPlan {
 	text-align:center;
+}
+
+#createForm {
+	text-align:center;
+	#mealTypeList li {
+		display: inline;
+		margin-right: 30px;
+	}
 }
