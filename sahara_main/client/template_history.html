@@ -1,7 +1,7 @@
 <template name = "history">
 	<h1>Meal plans</h1>
 	{{#each plan}}
-		<p>{{mealType}}</p>
+		<h2>{{mealType}}: {{datetimeToDisplayFormat datetime}}</h2>
 		<p>{{description}}</p>
 	{{/each}}
 </template>
