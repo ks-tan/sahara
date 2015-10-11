@@ -19,6 +19,10 @@ Router.route('history',{
 	template: 'history'
 });
 
+Router.route('recipe',{
+	template: 'recipe'
+});
+
 Router.route('/session/:_id', function() {
 	if (this.ready()) {
 		this.render('session', {
