@@ -10,6 +10,7 @@ Template.session.helpers({
 
 	isNotResponded: function() {
 		var rsvp = Rsvps.findOne({userId: Meteor.userId(), sessionId: this._id});
+		console.log(rsvp);
 		return typeof rsvp === 'undefined';
 	}
 });
@@ -27,7 +28,7 @@ Template.session.events({
 
 function addRsvpToDatabase(sessionId, rsvp) {
 	var arr = new Array();
-	var sessionDatetime = Sessions.findOne({_id: this._id})['datetime'];
+	var sessionDatetime = Sessions.findOne({_id: sessionId})['datetime'];
 	Rsvps.insert({
 		sessionId: sessionId,
 		userId: Meteor.userId(),

@@ -43,6 +43,8 @@ Template.create.events({
 		var mealType = event.target.mealType.value;
 		var description = event.target.description.value;
 
+		console.log(new Date(datetime));
+		console.log(new Date(respondBy));
 		Sessions.insert({
 			owner: Meteor.userId(),
 			datetime: datetime,
@@ -50,10 +52,11 @@ Template.create.events({
 			mealType: mealType,
 			description: description
 		}, function (err, id) {
+			console.log(err);
 			FB.ui({
 				method: 'send',
-				message: id,
-				link:'http://sahara.meteor.com/session/' + id
+				link:'http://sahara.meteor.com/session/' + id,
+				display: 'iframe'
 			});
 		}
 		);
