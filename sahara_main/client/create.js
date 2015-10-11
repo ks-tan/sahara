@@ -4,6 +4,9 @@ Template.create.helpers ({
 		var presetDate = new Date();
 		presetDate = presetDate.setMinutes(presetDate.getMinutes() + 2);
 		return datetimeToDatetimeString(new Date(presetDate));
+	},
+	isMobile: function(){
+		return isMobile();
 	}
 });
 
@@ -53,11 +56,13 @@ Template.create.events({
 			description: description
 		}, function (err, id) {
 			console.log(err);
-			FB.ui({
+			if (!isMobile()) {
+				FB.ui({
 				method: 'send',
 				link:'http://sahara.meteor.com/session/' + id,
 				display: 'iframe'
 			});
+			}
 		}
 		);
 

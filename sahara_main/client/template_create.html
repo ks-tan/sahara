@@ -25,7 +25,11 @@
 			<br>
 			<textarea rows="4" cols="50" name="description" form="new-session"></textarea>
 			<br><br>
+			{{#unless isMobile}}
 	  		<button id = "buttonMakePlan" type = "submit" class="btn btn-lg">Invite friends</button>
+	  		{{else}}
+	  		<button id = "buttonMakePlan" type = "submit" class="btn btn-lg">Create plan</button>
+	  		{{/unless}}
 	  		<br><br>
 		</form>
 		</div>
