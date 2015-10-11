@@ -1,7 +1,9 @@
 
 Template.create.helpers ({
 	now: function() {
-		return datetimeToDatetimeString(new Date);
+		var presetDate = new Date();
+		presetDate = presetDate.setMinutes(presetDate.getMinutes() + 2);
+		return datetimeToDatetimeString(new Date(presetDate));
 	}
 });
 
