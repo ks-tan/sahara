@@ -11,8 +11,8 @@ Template.history.events({
 		if ($(event.target).prop("id") == "sendInvites") {
 			FB.ui({
 				method: 'send',
-				message: id,
-				link:'http://sahara.meteor.com/session/' + id
+				link:'http://sahara.meteor.com/session/' + id,
+				display: 'iframe'
 			});
 		} else if ($(event.target).prop("id") == "deletePlan") {
 			Sessions.remove(id);
