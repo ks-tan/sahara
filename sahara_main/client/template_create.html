@@ -4,10 +4,10 @@
 	<form class="new-session" id="new-session">
 		<!-- TODO Assign user_id as owner value !-->
 		<label id="datetimeLabel"> Date & Time:  </label>
-		<input name="datetime" type="datetime-local" value={{now}} required/>
+		<input name="datetime" type="datetime-local" value={{now}} min={{now}} required/>
 		<br>
 		<label id="respondByLabel"> Respond by: </label>
-		<input name="respondByDatetime" type="datetime-local" value={{now}} required/> 
+		<input name="respondByDatetime" type="datetime-local" value={{now}} min={{now}} required/> 
 		<br>
 
 		<!-- Checkbox for meal type -->

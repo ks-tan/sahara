@@ -1,7 +1,9 @@
 
 Template.create.helpers ({
 	now: function() {
-		return datetimeToDatetimeString(new Date);
+		var presetDate = new Date();
+		presetDate = presetDate.setMinutes(presetDate.getMinutes() + 2);
+		return datetimeToDatetimeString(new Date(presetDate));
 	}
 });
 
@@ -52,12 +54,12 @@ Template.create.events({
 			FB.ui({
 				method: 'send',
 				message: id,
-				link:'https://www.google.com/#' + id
+				link:'http://sahara.meteor.com/session/' + id
 			});
 		}
 		);
 
-		Router.go('home')
+		Router.go('home');
 	}
 });
 
