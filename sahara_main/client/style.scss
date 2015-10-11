@@ -78,3 +78,34 @@ html body {
 #sessionCard{
 	width: 500px;
 }
+
+.ingredientCard {
+	margin: 3px;
+	background-color: white;
+}
+
+.ingredientCard:hover {
+	background-color: #2980B9;
+	color: white;
+}
+
+.selected{
+	background-color: #3498DB;
+	color: white;
+}
+
+#buttonFindRecipe {
+	margin-top: 5px;
+	background-color: #E74C3C;
+	color: white;
+}
+
+#recipeCreatePlan{
+	background-color: #3498DB;
+	color: white;
+}
+
+#recipeCreatePlan:hover{
+	background-color: #2980B9;
+	color: white;
+}
