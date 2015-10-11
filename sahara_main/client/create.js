@@ -39,7 +39,7 @@ Template.create.events({
 	'submit .new-session': function(event) {
 		event.preventDefault();
 		var datetime = Date.parse(event.target.datetime.value);
-		var respondBy = Date.parse(event.target.respondByDatetime.value);
+		var respondBy = Date.parse(event.target.respondBy.value);
 		var mealType = event.target.mealType.value;
 		var description = event.target.description.value;
 
@@ -61,6 +61,27 @@ Template.create.events({
 		Router.go('home');
 	}
 });
+
+Template.create.rendered = function() {
+	$('#datetime').change(function() {
+		// respondBy <= datetime
+		// when datetime < respondBy, make respondBy same as datetime 
+		var datetime = Date.parse($('#datetime').val());
+		var respondBy = Date.parse($('#respondBy').val());
+		if(datetime < respondBy) {
+			$('#respondBy').val($('#datetime').val());
+		}
+	});
+	$('#respondBy').change(function() {
+		// respondBy <= datetime
+		// when respondBy > datetime, make datetime same as respondBy 
+		var datetime = Date.parse($('#datetime').val());
+		var respondBy = Date.parse($('#respondBy').val());
+		if(respondBy > datetime) {
+			$('#datetime').val($('#respondBy').val());
+		}
+	})
+};
 
 window.fbAsyncInit = function() {
 	FB.init({
