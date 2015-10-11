@@ -53,7 +53,7 @@ Template.create.events({
 				method: 'send',
 				message: id,
 				link:'https://www.google.com/#' + id
-			});		
+			});
 		}
 		);
 
