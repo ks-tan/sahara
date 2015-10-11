@@ -23,11 +23,11 @@ Template.session.helpers({
 });
 
 Template.session.events({
-	"click #rsvp-yes": function(event){
+	"click #rsvp-yes": function(){
 		addRsvpToDatabase(this._id, true);
 		Router.go("/session/" + this._id);
 	},
-	"click #rsvp-no": function(event){
+	"click #rsvp-no": function(){
 		addRsvpToDatabase(this._id, false);
 		Router.go("/session/" + this._id);
 	}

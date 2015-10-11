@@ -50,7 +50,6 @@ Template.create.events({
 			mealType: mealType,
 			description: description
 		}, function (err, id) {
-			console.log(id)
 			FB.ui({
 				method: 'send',
 				message: id,
