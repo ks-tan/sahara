@@ -5,7 +5,7 @@ Template.create.helpers ({
 	}
 });
 
-var datetimeToDatetimeString = function(date) {
+datetimeToDatetimeString = function(date) {
 	var month = (date.getMonth() + 1);
 	//prepend '0' if one digit month
 	if (month < 10) {
@@ -36,8 +36,8 @@ var datetimeToDatetimeString = function(date) {
 Template.create.events({
 	'submit .new-session': function(event) {
 		event.preventDefault();
-		var datetime = event.target.datetime.value;
-		var respondBy = event.target.respondByDatetime.value;
+		var datetime = Date.parse(event.target.datetime.value);
+		var respondBy = Date.parse(event.target.respondByDatetime.value);
 		var mealType = event.target.mealType.value;
 		var description = event.target.description.value;
 
