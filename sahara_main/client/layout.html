@@ -1,8 +1,10 @@
 <template name = "layout">
 	<div>
 	{{> navigationBar}}
+	<div class = "container">
 	{{#transition wrap="true" in="slideInLeft" out="fadeOut:200"}}
    		{{> yield}}
   	{{/transition}}
+  	</div>
   	</div>
 </template>

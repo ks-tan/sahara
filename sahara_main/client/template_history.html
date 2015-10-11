@@ -1,3 +1,7 @@
 <template name = "history">
 	<h1>Meal plans</h1>
+	{{#each plan}}
+		<p>{{mealType}}</p>
+		<p>{{description}}</p>
+	{{/each}}
 </template>

@@ -44,3 +44,11 @@
 #gotPlan {
 	text-align:center;
 }
+
+#createForm {
+	text-align:center;
+	#mealTypeList li {
+		display: inline;
+		margin-right: 30px;
+	}
+}
