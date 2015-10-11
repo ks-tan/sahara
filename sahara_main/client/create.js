@@ -52,12 +52,12 @@ Template.create.events({
 			FB.ui({
 				method: 'send',
 				message: id,
-				link:'https://www.google.com/#' + id
+				link:'http://sahara.meteor.com/session/' + id
 			});
 		}
 		);
 
-		Router.go('home')
+		Router.go('home');
 	}
 });
 
