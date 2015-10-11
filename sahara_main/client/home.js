@@ -2,20 +2,33 @@ Template.home.helpers ({
 	sessionSummary: function() {
 		var now = new Date();
 		var sessionUserOwn = Sessions.findOne({ owner: Meteor.userId(), datetime: { $gt: now.getTime()}}, {sort: {datetime: 1}});
-		var sessionUserParticipate = Sessions.findOne({ rsvpYes: Meteor.userId() , datetime: { $gt: now.getTime()}}, {sort: {datetime: 1}});
-		
-		if (sessionUserOwn['datetime'] < sessionUserParticipate['datetime']) {
-			return sessionUserOwn;
+		var participatingSessionRsvp = Rsvps.findOne({ userId: Meteor.userId(), participate: true, datetime: { $gt: now.getTime()}}, {sort: {datetime: 1}});
+		var participatingSession;
+		if (typeof participatingSessionRsvp != 'undefined') {
+			var participatingSessionId = participatingSessionRsvp['sessionId'];
+			participatingSession = Sessions.findOne({ _id: participatingSessionId});
+		}
+
+		if (typeof participatingSession !== 'undefined') {
+			if (sessionUserOwn['datetime'] < participatingSession['datetime']) {
+				return sessionUserOwn;
+			} else {
+				return participatingSession;
+			}
 		} else {
-			return sessionUserParticipate;
+			return sessionUserOwn;
 		}
 	},
 	hasPlan: function(){
 		var now = new Date();
 		var sessionUserOwn = Sessions.findOne({ owner: Meteor.userId(), datetime: { $gt: now.getTime()}}, {sort: {datetime: 1}});
-		var sessionUserParticipate = Sessions.findOne({ rsvpYes: Meteor.userId() , datetime: { $gt: now.getTime()}}, {sort: {datetime: 1}});
-		
-		return typeof sessionUserOwn !== 'undefined' | typeof sessionUserParticipate !== 'undefined';
+		var participatingSessionRsvp = Rsvps.findOne({ userId: Meteor.userId(), participate: true, datetime: { $gt: now.getTime()}}, {sort: {datetime: 1}});
+		var participatingSession;
+		if (typeof participatingSessionRsvp != 'undefined') {
+			var participatingSessionId = participatingSessionRsvp['sessionId'];
+			participatingSession = Sessions.findOne({ _id: participatingSessionId});
+		}
+		return typeof sessionUserOwn !== 'undefined' | typeof participatingSession !== 'undefined';
 	}
 });
 
@@ -32,7 +45,6 @@ Template.registerHelper('showNameWithFbId', function(ids) {
 	for (x in ids) {
 		result.push(Meteor.users.findOne({_id: ids[x]})['profile']['name']);
 	}
-	console.log(result);
 	return result;
 });
 

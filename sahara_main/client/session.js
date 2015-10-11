@@ -9,16 +9,8 @@ Template.session.helpers({
 	},
 
 	isNotResponded: function() {
-		var arr = new Array();
-		var rsvpYes = Sessions.findOne({_id: this._id})['rsvpYes'];
-		var rsvpNo = Sessions.findOne({_id: this._id})['rsvpNo'];
-		if (rsvpYes !== 'undefined') {
-			arr = arr.concat(rsvpYes);
-		}
-		if (rsvpNo !== 'undefined') {
-			arr = arr.concat(rsvpNo);
-		}
-		return !contains(arr, Meteor.userId());
+		var rsvp = Rsvps.findOne({userId: Meteor.userId(), sessionId: this._id});
+		return typeof rsvp === 'undefined';
 	}
 });
 
@@ -33,33 +25,15 @@ Template.session.events({
 	}
 });	
 
-function addRsvpToDatabase(id, rsvp) {
+function addRsvpToDatabase(sessionId, rsvp) {
 	var arr = new Array();
-	if (rsvp) {
-		if (typeof Sessions.findOne({_id: id})['rsvpYes'] !== 'undefined') {
-			arr = Sessions.findOne({_id: id})['rsvpYes'];
-		}
-
-		if (!contains(arr, Meteor.userId())) {
-			arr.push(Meteor.userId());	
-		}
-		
-		Sessions.update(id, {
-	        $set: {rsvpYes: arr}
-	    });
-	} else {
-		if (typeof Sessions.findOne({_id: id})['rsvpNo'] !== 'undefined') {
-			arr = Sessions.findOne({_id: id})['rsvpNo'];
-		}
-
-		if (!contains(arr, Meteor.userId())) {
-			arr.push(Meteor.userId());	
-		}
-
-		Sessions.update(id, {
-	        $set: {rsvpNo: arr}
-	    });
-	}
+	var sessionDatetime = Sessions.findOne({_id: this._id})['datetime'];
+	Rsvps.insert({
+		sessionId: sessionId,
+		userId: Meteor.userId(),
+		participate: rsvp,
+		datetime: sessionDatetime
+	});
 }
 
 function contains(arr, element) {
