@@ -24,3 +24,4 @@ iron:router
 accounts-facebook
 service-configuration       
 webtempest:animate
+semantic:ui-css

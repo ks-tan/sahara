@@ -1,7 +1,22 @@
 <template name = "history">
-	<h1>Meal plans</h1>
+	<div id = "history">
+	<h1>Meal plans</h1><br>
+	<div class = "ui stackable cards">
 	{{#each plan}}
-		<h2>{{mealType}}: {{datetimeToDisplayFormat datetime}}</h2>
-		<p>{{description}}</p>
+		<div class = "card">
+			<div class = "content">
+				<div class = "header">{{mealType}}</div>
+				<div class = "meta">{{datetimeToDisplayFormat datetime}}</div>
+				<div class = "description">{{description}}</div>
+			</div>
+			<div class="extra content">
+			    <div class="ui two buttons">
+					<button class="positive ui button">Send invites</button>
+					<button class="negative ui button">Delete plan</button>
+		      	</div>
+		    </div>
+		</div>
 	{{/each}}
+	</div>
+	</div>
 </template>
