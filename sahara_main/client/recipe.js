@@ -6,6 +6,9 @@ Template.recipe.events({
 			Ingredients.update(this._id,{$set: {status: "inactive"}});
 		}
 	},
+	"click #removeIcon": function(event) {
+		Ingredients.remove({_id: this._id});
+	},
 	"submit .findRecipe": function(event) {
       	event.preventDefault();
 

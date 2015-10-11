@@ -10,7 +10,7 @@
 				</form>
 				<form class = 'findRecipe'>
 					{{#each ingredients}}
-						<div class = "btn btn-md ingredientCard {{selectedClass}}" id={{ingredient}}>{{ingredient}}</div>
+						<div class = "btn btn-md ingredientCard {{selectedClass}}" id={{ingredient}}>{{ingredient}} <i class="remove icon" id = "removeIcon"></i></div>
 					{{/each}}
 					<br>
 					<button class = "btn btn-md" id = "buttonFindRecipe" type="submit">Find Recipe</button><br><br>
