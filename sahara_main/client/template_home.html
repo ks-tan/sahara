@@ -1,13 +1,12 @@
 <template name = "home">
 	<!-- {{#if CurrentUser}} -->
 		<div id = "gotPlan">
-		{{data}}
 			<h1>Your next meal</h1>
 			{{sessionSummary.mealType}}
 			<br>
-			{{sessionSummary.datetime}}
+			{{datetimeToDisplayFormat sessionSummary.datetime}}
 			<br>
-			{{sessionSummary.respondBy}}
+			{{datetimeToDisplayFormat sessionSummary.respondBy}}
 			<br>
 			{{sessionSummary.description}}
 			<br>

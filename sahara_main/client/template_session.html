@@ -9,8 +9,12 @@
 	<h4> Description: </h4>
 	<h4>{{description}}</h4>
 
-	<form class="rsvp">
-		<input type="submit" value="YES"/>
-		<input type="submit" value="NO"/>
-	</form>
+	{{#if isNotDue}}
+		<form class="rsvp">
+			<input type="submit" value="YES"/>
+			<input type="submit" value="NO"/>
+		</form>
+	{{else}}
+		<!-- print due messages -->
+	{{/if}}
 </template>
