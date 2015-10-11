@@ -2,11 +2,15 @@
 	<!-- {{#if CurrentUser}} -->
 		<div id = "gotPlan">
 			<h1>Your next meal</h1>
-			{{mealType}}
-			{{mealTime}}
-			{{mealMenu}}
-			{{mealPicture}}
-			{{whoEating}}
+			{{sessionSummary.mealType}}
+			<br>
+			{{sessionSummary.datetime}}
+			<br>
+			{{sessionSummary.respondBy}}
+			<br>
+			{{sessionSummary.description}}
+			<br>
+			{{sessionSummary.whoEating}}
 		</div>
 	<!-- {{else}} -->
 		<div id = "noPlan">

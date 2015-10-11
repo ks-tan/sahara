@@ -2,7 +2,7 @@
 	<h1>Create a new meal plan!</h1>
 	<form class="new-session" id="new-session">
 		<!-- TODO Assign user_id as owner value !-->
-		<label id="datetimeLabel"> Date:  </label>
+		<label id="datetimeLabel"> Date & Time:  </label>
 		<input name="datetime" type="datetime-local" value={{now}} required/>
 		<br>
 		<label id="respondByLabel"> Respond by: </label>
@@ -10,13 +10,13 @@
 		<br>
 
 		<!-- Checkbox for meal type -->
-		<input name="mealType" type="radio" value="breakfast" checked />
+		<input name="mealType" type="radio" value="Breakfast" checked />
 		<label id="mealTypeLabel"> Breakfast </label>
 		<br>
-		<input name="mealType" type="radio" value="lunch" />
+		<input name="mealType" type="radio" value="Lunch" />
 		<label id="mealTypeLabel"> Lunch </label>
 		<br>
-		<input name="mealType" type="radio" value="dinner" />
+		<input name="mealType" type="radio" value="Dinner" />
 		<label id="mealTypeLabel"> Dinner </label>
 		<br>
 		<br>
