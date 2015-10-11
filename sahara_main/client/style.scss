@@ -1,5 +1,9 @@
 @import '{reywood:bootstrap3-sass}/bootstrap';
 
+html body {
+	background-color:#ECF0F1;
+}
+
 .navbar-default .navbar-toggle:hover, 
 .navbar-default .navbar-toggle:focus {
 	background-color: #E74C3C
@@ -39,18 +43,16 @@
 
 #noPlan {
 	text-align:center;
-	#buttonMakePlan{
-		background-color: #E74C3C;
-		color: white;
-	}
+
+}
+
+#buttonMakePlan{
+	background-color: #E74C3C;
+	color: white;
 }
 
 #gotPlan {
 	text-align:center;
-	#buttonMakePlan{
-		background-color: #E74C3C;
-		color: white;
-	}
 }
 
 #createForm {
