@@ -74,7 +74,7 @@ Template.create.events({
 		}
 		);
 
-		Router.go('home');
+		Router.go('/session/'.concat(id));
 	}
 });
 

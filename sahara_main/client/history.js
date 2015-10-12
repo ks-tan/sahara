@@ -1,6 +1,6 @@
 Template.history.helpers({
 	'plan': function(){
-		sessionSummary = Sessions.find().fetch();
+		sessionSummary = Sessions.find({owner: Meteor.userId()}).fetch();
 		for (x in sessionSummary) {
 			var sessionId = sessionSummary[x]['_id'];
 			sessionSummary[x]["rsvpYes"] = getRsvpYes(sessionId);
