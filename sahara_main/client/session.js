@@ -20,6 +20,10 @@ Template.session.helpers({
 			arr.push(rsvpYes[x]['userId']);
 		}
 		return arr;
+	},
+
+	isLinkCopied: function() {
+		return typeof Session.get("isLinkCopied") !== 'undefined' && Session.get("isLinkCopied");
 	}
 });
 
@@ -33,6 +37,23 @@ Template.session.events({
 		Router.go("/session/" + this._id);
 	}
 });	
+
+Template.session.rendered = function() {
+	$('#copyLink').click(function(){
+		copyTextarea = document.querySelector('#copyLink');
+		copyTextarea.select();
+		try {
+			var successful = document.execCommand('copy');
+			if (successful == 'successful') {
+				Session.set("isLinkCopied", true);
+			} else {
+				Session.set("isLinkCopied", false);
+			}
+		} catch (err) {
+			console.log(err);
+		}
+	});
+};
 
 function addRsvpToDatabase(sessionId, rsvp) {
 	var arr = new Array();

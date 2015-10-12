@@ -41,5 +41,11 @@
 		{{else}}
 			<h4>You cannot respond to this invite anymore</h4>
 		{{/if}}
+
+		<input type="text" id="copyLink" value={{concat "http://sahara.meteor.com/session/" _id}}>
+		
+		{{#if isLinkCopied}}
+		<label>Copied to clipboard successfully</label>
+		{{/if}}
 	</div>
 </template>
