@@ -6,7 +6,6 @@ Template.login.events({
 			if (err){
 				throw new Meteor.Error("Facebook login failed");
 			}
-			Router.go('home');
 		});
 	}
 });

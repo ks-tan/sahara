@@ -32,6 +32,8 @@ Template.home.helpers ({
 			var participatingSessionId = participatingSessionRsvp['sessionId'];
 			participatingSession = Sessions.findOne({ _id: participatingSessionId});
 		}
+		console.log(typeof sessionUserOwn !== 'undefined');
+		console.log(typeof participatingSession !== 'undefined');
 		return typeof sessionUserOwn !== 'undefined' | typeof participatingSession !== 'undefined';
 	}
 });
