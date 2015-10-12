@@ -23,6 +23,8 @@ Template.session.helpers({
 	},
 
 	isLinkCopied: function() {
+		console.log(typeof Session.get("isLinkCopied") !== 'undefined');
+		console.log(Session.get("isLinkCopied"));
 		return typeof Session.get("isLinkCopied") !== 'undefined' && Session.get("isLinkCopied");
 	}
 });
@@ -44,11 +46,7 @@ Template.session.rendered = function() {
 		copyTextarea.select();
 		try {
 			var successful = document.execCommand('copy');
-			if (successful == 'successful') {
-				Session.set("isLinkCopied", true);
-			} else {
-				Session.set("isLinkCopied", false);
-			}
+			Session.set("isLinkCopied", successful);
 		} catch (err) {
 			console.log(err);
 		}
