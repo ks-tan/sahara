@@ -28,7 +28,11 @@
 			</div>
 			<div class="extra content">
 			    <div class="ui two buttons">
+			    	{{#unless isMobile}}
 					<button type="submit" id="sendInvites" class="positive ui button" value={{_id}}>Send invites</button>
+					{{else}}
+					<a href={{concat "/session/" _id}} id="goToPlan" class="positive ui button">Go to plan</a>
+					{{/unless}}
 					<button type="submit" id="deletePlan" class="negative ui button" value={{_id}}>Delete plan</button>
 		      	</div>
 		    </div>
