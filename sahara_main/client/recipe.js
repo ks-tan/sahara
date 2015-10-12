@@ -45,8 +45,8 @@ Template.recipe.events({
 	},
 	"click #recipeCreatePlan": function(){
 		event.preventDefault();
-		console.log("Click");
-		console.log(this["title"]);
+		Session.set('title', this['title']);
+		Router.go('/create');
 	}
 });
 
@@ -73,13 +73,6 @@ function httpGetRecipe (url){
 		}
 	});
 }
-
-// Template.recipe.rendered =  function() {
-// 	$('#recipeCreatePlan').click(function(){
-// 		var id = $(this).attr('value');
-// 		console.log("click");
-// 	});
-// };
 
 Template.recipe.helpers({
 	recipes: function() {
@@ -114,7 +107,14 @@ Template.recipe.helpers({
 	}
 });
 
-Template.registerHelper('decodeUtf8', function(str){
+decodeUtf8 = function(str) {
+	console.log(str);
+	var elem = document.createElement('textarea');
+	elem.innerHTML = str;
+	return elem.value;
+};
+
+Template.registerHelper('decodeUtf8', function(str) {
 	var elem = document.createElement('textarea');
 	elem.innerHTML = str;
 	return elem.value;

@@ -4,7 +4,11 @@
 	<div class = "ui centered card" id = "cardForm">
 		<form class="new-session" id="new-session">
 			<br><br>
-			<center><label id="datetimeLabel"> Date & Time:  </label>
+			<center>
+			<label id="titleLabel"> Title: </label>
+			<input name="title" id="title" type="text" value={{getTitle}}>
+			<br>
+			<label id="datetimeLabel"> Date & Time:  </label>
 			<input name="datetime" id="datetime" type="datetime-local" value={{now}} min={{now}} required/>
 			<br>
 			<label id="respondByLabel"> Respond by: </label>
