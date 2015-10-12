@@ -71,10 +71,10 @@ Template.create.events({
 				display: 'iframe'
 			});
 			}
+
+			Router.go('/session/'.concat(id));
 		}
 		);
-
-		Router.go('/session/'.concat(id));
 	}
 });
 
