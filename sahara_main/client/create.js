@@ -4,9 +4,6 @@ Template.create.helpers ({
 		var presetDate = new Date();
 		presetDate = presetDate.setMinutes(presetDate.getMinutes() + 2);
 		return datetimeToDatetimeString(new Date(presetDate));
-	},
-	isMobile: function(){
-		return isMobile();
 	}
 });
 

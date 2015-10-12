@@ -6,7 +6,7 @@ Template.history.helpers({
 			sessionSummary[x]["rsvpYes"] = getRsvpYes(sessionId);
 		}
 		return sessionSummary;
-	}
+	},
 });
 
 Template.history.events({
@@ -25,5 +25,9 @@ Template.history.events({
 });
 
 Template.registerHelper('equals', function (a, b) {
-      return a === b;
+    return a === b;
+});
+
+Template.registerHelper('concat', function(arg1, arg2) {
+	return arg1.concat(arg2);
 });
