@@ -6,7 +6,12 @@ Template.create.helpers ({
 		return datetimeToDatetimeString(new Date(presetDate));
 	},
 	getTitle: function() {
-		return decodeUtf8(Session.get('title'));
+		var title = Session.get('title');
+		if (typeof title === 'undefined') {
+			return "";
+		} else {
+			return decodeUtf8(title);
+		}
 	}
 });
 
@@ -41,6 +46,7 @@ datetimeToDatetimeString = function(date) {
 Template.create.events({
 	'submit .new-session': function(event) {
 		event.preventDefault();
+		delete Session.keys['title'];
 		var title = event.target.title.value;
 		var datetime = Date.parse(event.target.datetime.value);
 		var respondBy = Date.parse(event.target.respondBy.value);
