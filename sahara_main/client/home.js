@@ -10,7 +10,7 @@ Template.home.helpers ({
 		}
 
 
-		if (typeof participatingSession !== 'undefined') {
+		if (typeof participatingSession !== 'undefined' && typeof sessionUserOwn !== 'undefined') {
 			if (sessionUserOwn['datetime'] < participatingSession['datetime']) {
 				sessionUserOwn['rsvpYes'] = getRsvpYes(sessionUserOwn['_id']);
 				return sessionUserOwn;
@@ -18,17 +18,22 @@ Template.home.helpers ({
 				participatingSession['rsvpYes'] = getRsvpYes(participatingSession['_id']);
 				return participatingSession;
 			}
-		} else {
+		} else if (typeof sessionUserOwn !== 'undefined') {
 			sessionUserOwn['rsvpYes'] = getRsvpYes(sessionUserOwn['_id']);
 			return sessionUserOwn;
+		} else {
+			console.log("CORRECT!");
+			participatingSession['rsvpYes'] = getRsvpYes(participatingSession['_id']);
+			return participatingSession;
 		}
 	},
 	hasPlan: function(){
 		var now = new Date();
 		var sessionUserOwn = Sessions.findOne({ owner: Meteor.userId(), datetime: { $gt: now.getTime()}}, {sort: {datetime: 1}});
 		var participatingSessionRsvp = Rsvps.findOne({ userId: Meteor.userId(), participate: true, datetime: { $gt: now.getTime()}}, {sort: {datetime: 1}});
+		console.log(participatingSessionRsvp);
 		var participatingSession;
-		if (typeof participatingSessionRsvp != 'undefined') {
+		if (typeof participatingSessionRsvp !== 'undefined') {
 			var participatingSessionId = participatingSessionRsvp['sessionId'];
 			participatingSession = Sessions.findOne({ _id: participatingSessionId});
 		}
