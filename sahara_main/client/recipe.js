@@ -41,10 +41,14 @@ Template.recipe.events({
 				return;
 			}
 		}
-
 		Ingredients.insert({ingredient: ingredientInput, userId: Meteor.user()._id});
+	},
+	"click #recipeCreatePlan": function(){
+		event.preventDefault();
+		console.log("Click");
+		console.log(this["title"]);
 	}
-})
+});
 
 function httpGetRecipe (url){
 	Meteor.call("findRecipes", url, function(err, data){
@@ -70,11 +74,12 @@ function httpGetRecipe (url){
 	});
 }
 
-Template.recipe.rendered =  function() {
-	$('#recipeCreatePlan').click(function(){
-		console.log($('#recipeCreatePlan').val());
-	});
-};
+// Template.recipe.rendered =  function() {
+// 	$('#recipeCreatePlan').click(function(){
+// 		var id = $(this).attr('value');
+// 		console.log("click");
+// 	});
+// };
 
 Template.recipe.helpers({
 	recipes: function() {
