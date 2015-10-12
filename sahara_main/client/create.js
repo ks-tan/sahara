@@ -41,6 +41,7 @@ datetimeToDatetimeString = function(date) {
 Template.create.events({
 	'submit .new-session': function(event) {
 		event.preventDefault();
+		var title = event.target.title.value;
 		var datetime = Date.parse(event.target.datetime.value);
 		var respondBy = Date.parse(event.target.respondBy.value);
 		var mealType = event.target.mealType.value;
@@ -50,6 +51,7 @@ Template.create.events({
 		console.log(new Date(respondBy));
 		Sessions.insert({
 			owner: Meteor.userId(),
+			title: title,
 			datetime: datetime,
 			respondBy: respondBy,
 			mealType: mealType,
