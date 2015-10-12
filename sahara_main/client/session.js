@@ -43,7 +43,8 @@ Template.session.events({
 Template.session.rendered = function() {
 	$('#copyLink').click(function(){
 		copyTextarea = document.querySelector('#copyLink');
-	    copyTextarea.select();
+		copyTextarea.setSelectionRange(0, this.value.length);
+	    // copyTextarea.select();
 		try {
 			var successful = document.execCommand('copy');
 			Session.set("isLinkCopied", successful);
