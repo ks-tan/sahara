@@ -1,15 +1,15 @@
 <template name = "create">
 	<div id = "createForm">
-	<h1>Create a new meal plan!</h1>
+	<center><h1>Create a new meal plan!</h1></center>
 	<div class = "ui centered card" id = "cardForm">
 		<form class="new-session" id="new-session">
 			<br><br>
-			<label id="datetimeLabel"> Date & Time:  </label>
+			<center><label id="datetimeLabel"> Date & Time:  </label>
 			<input name="datetime" id="datetime" type="datetime-local" value={{now}} min={{now}} required/>
 			<br>
 			<label id="respondByLabel"> Respond by: </label>
-			<input name="respondBy" id="respondBy" type="datetime-local" value={{now}} min={{now}} required/> 
-			<br><br>
+			<input name="respondBy" id="respondBy" type="datetime-local" value={{now}} min={{now}} required/></center> 
+			<br>
 			<!-- Checkbox for meal type -->
 			<ul id = "mealTypeList">
 			<li><input name="mealType" type="radio" value="Breakfast" checked />
@@ -20,17 +20,16 @@
 			<label id="mealTypeLabel"> Dinner </label></li>
 			</ul>
 
-
-			<label id="descriptionLabel"> Description: </label>
+			<center><label id="descriptionLabel"> Description: </label>
 			<br>
-			<textarea rows="4" cols="50" name="description" form="new-session"></textarea>
+			<textarea rows="4" cols="50" name="description" form="new-session" id="descriptionField"></textarea>
 			<br><br>
 			{{#unless isMobile}}
 	  		<button id = "buttonMakePlan" type = "submit" class="btn btn-lg">Invite friends</button>
 	  		{{else}}
 	  		<button id = "buttonMakePlan" type = "submit" class="btn btn-lg">Create plan</button>
 	  		{{/unless}}
-	  		<br><br>
+	  		<br><br></center>
 		</form>
 		</div>
 	</div>

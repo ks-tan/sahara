@@ -57,13 +57,18 @@ html body {
 }
 
 #createForm {
-	text-align:center;
-	#mealTypeList li {
-		display: inline;
-		margin-right: 30px;
+	#mealTypeList {
+		text-align:center;
+		li {
+			display: inline-block;
+			margin-right: 5%;
+		}
 	}
 	#cardForm {
-		width: 600px;
+		width: 70%;
+	}
+	#descriptionField {
+		width: 70%;
 	}
 }
 
