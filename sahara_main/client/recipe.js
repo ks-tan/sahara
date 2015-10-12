@@ -21,7 +21,7 @@ Template.recipe.events({
       		}
       	}
 		
-      	var url = "http://food2fork.com/api/search?key=38581ff9d82436e1bd417eab1d5cf0b0&q=";
+      	var url = "http://food2fork.com/api/search?key=aa7a553fe63a54fd4a6e3f08c4204e5d&q=";
       	for (x in selectedIngredients) {
       		url += selectedIngredients[x] + "%20";
       	}
@@ -57,20 +57,24 @@ function httpGetRecipe (url){
 		}
 
 		for (x in recipeIds) {
-			url = "http://food2fork.com/api/get?key=38581ff9d82436e1bd417eab1d5cf0b0&rId=";
+			url = "http://food2fork.com/api/get?key=aa7a553fe63a54fd4a6e3f08c4204e5d&rId=";
 			url += recipeIds[x];
 
 			var arr = new Array();
 			Meteor.call("getRecipe", url, function(err, data){
 				if (err) console.log(err);
-				console.log(data);
 				arr.push(data);
-				console.log(arr);
 				Session.set("recipeData", arr);
 			});
 		}
 	});
 }
+
+Template.recipe.rendered =  function() {
+	$('#recipeCreatePlan').click(function(){
+		console.log($('#recipeCreatePlan').val());
+	});
+};
 
 Template.recipe.helpers({
 	recipes: function() {

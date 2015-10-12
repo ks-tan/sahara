@@ -22,7 +22,6 @@ Template.home.helpers ({
 			sessionUserOwn['rsvpYes'] = getRsvpYes(sessionUserOwn['_id']);
 			return sessionUserOwn;
 		} else {
-			console.log("CORRECT!");
 			participatingSession['rsvpYes'] = getRsvpYes(participatingSession['_id']);
 			return participatingSession;
 		}
@@ -31,14 +30,11 @@ Template.home.helpers ({
 		var now = new Date();
 		var sessionUserOwn = Sessions.findOne({ owner: Meteor.userId(), datetime: { $gt: now.getTime()}}, {sort: {datetime: 1}});
 		var participatingSessionRsvp = Rsvps.findOne({ userId: Meteor.userId(), participate: true, datetime: { $gt: now.getTime()}}, {sort: {datetime: 1}});
-		console.log(participatingSessionRsvp);
 		var participatingSession;
 		if (typeof participatingSessionRsvp !== 'undefined') {
 			var participatingSessionId = participatingSessionRsvp['sessionId'];
 			participatingSession = Sessions.findOne({ _id: participatingSessionId});
 		}
-		console.log(typeof sessionUserOwn !== 'undefined');
-		console.log(typeof participatingSession !== 'undefined');
 		return typeof sessionUserOwn !== 'undefined' | typeof participatingSession !== 'undefined';
 	}
 });
